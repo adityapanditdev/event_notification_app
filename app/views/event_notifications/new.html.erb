@@ -1,0 +1,13 @@
+<h1>Event <%= params[:event]%></h1>
+
+<%= form_with(model: @event, url: params[:actions], local: true) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :email %>
+  <%= form.text_field :email %>
+
+  <%= form.hidden_field :user_id, value: current_user.id %>
+
+  <%= form.submit "Create Event" %>
+<% end %>
