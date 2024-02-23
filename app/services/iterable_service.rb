@@ -7,11 +7,13 @@ class IterableService
   end
 
   def send_notification_for_event_b(name, email)
-    create_campaign(name)
+    campaign = create_campaign(name)
     events = Iterable::Events.new
     events.track name, email
-    send_notification(campaign_id)
+    send_notification(campaign)
   end
+
+  private
 
   def create_campaign(name)
     camp = Iterable::Campaigns.new
